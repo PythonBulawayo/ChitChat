@@ -1,5 +1,4 @@
 ---
-
 - name: Install Prerequisites
   ansible.builtin.apt:
     name: aptitude
@@ -24,9 +23,9 @@
   lineinfile:
     path: /etc/sudoers
     state: present
-    regexp: '^%prime'
-    line: '%prime ALL=(ALL) NOPASSWD: ALL'
-    validate: '/usr/sbin/visudo -cf %s'
+    regexp: "^%prime"
+    line: "%prime ALL=(ALL) NOPASSWD: ALL"
+    validate: "/usr/sbin/visudo -cf %s"
 
 - name: Create regular user with sudo priviledges
   user:
@@ -50,7 +49,6 @@
     regexp: "^#?PubkeyAuthentication"
     line: "PubkeyAuthentication yes"
 
-
 - name: Disallow password authentication
   lineinfile:
     path: /etc/ssh/sshd_config
@@ -58,7 +56,6 @@
     regexp: "^#?PasswordAuthentication"
     line: "PasswordAuthentication no"
   register: disallow_pw
-
 
 - name: Disallow Root SSH access
   lineinfile:
@@ -77,7 +74,9 @@
 - name: UFW - Allow SSH connections
   ufw:
     rule: allow
-    name: OpenSSH
+    port: "{{ssh_port}}"
+    proto: tcp
+
 
 - name: UFW - Deny all other incoming traffic by default
   ufw:

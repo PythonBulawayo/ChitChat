@@ -4,7 +4,7 @@
   become: true
   vars:
     ansible_user: optimus
-    ansible_port: 1985
+    ansible_port: "{{ssh_port}}"
     sys_packages:
       [
         "curl",
