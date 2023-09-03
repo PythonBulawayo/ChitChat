@@ -5,7 +5,7 @@
 The setup script assumes you have an SSH public key called `id_ed25519` in your `~/.ssh/` directory. Create one before
 running it:
 
-Create an SSH keypair in your `~/.ssh/aardwolf` directory:
+Create an SSH keypair in your `~/.ssh/` directory:
 
 ```shell
 ssh-keygen -t ed25519 
