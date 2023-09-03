@@ -19,5 +19,6 @@
     server_name: aardwolf
   roles:
     - role: security
+    - role: docker
 
 

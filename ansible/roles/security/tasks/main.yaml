@@ -73,3 +73,14 @@
     name: sshd
     state: restarted
   when: disallow_pw.changed or disallow_root_ssh.changed
+
+- name: UFW - Allow SSH connections
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: UFW - Deny all other incoming traffic by default
+  ufw:
+    state: enabled
+    policy: deny
+    direction: incoming
