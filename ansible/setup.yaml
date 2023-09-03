@@ -1,0 +1,23 @@
+---
+- name: ChitChat Server Initial Setup
+  hosts: aardwolf
+  become: true
+  vars:
+    ansible_user: optimus
+    ansible_port: 1985
+    sys_packages:
+      [
+        "curl",
+        "git",
+        "gnupg",
+        "ca-certificates",
+        "apt-transport-https",
+        "software-properties-common",
+        "ufw",
+      ]
+    copy_local_ssh_key: "{{lookup('ansible.builtin.file', lookup('ansible.builtin.env', 'HOME') + '/.ssh/id_ed25519.pub') }}"
+    server_name: aardwolf
+  roles:
+    - role: security
+
+
