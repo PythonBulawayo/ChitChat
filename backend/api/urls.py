@@ -1,18 +1,13 @@
 from django.urls import path, include
-from .views import dashboard, profile_list, profile
 from rest_framework import routers
 from api import views
-
-router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'profiles', views.ProfileViewSet)
 
 
 app_name = "api"
 urlpatterns = [
-    path("", include(router.urls)),
-    path("profile_list/", profile_list, name="profile_list"),
-    path("profile/<int:pk>/", profile, name="profile"),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-
+    path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
+    path("users/", views.CustomUserList.as_view(), name="users"),
+    path("users/<int:pk>/", views.CustomUserDetail.as_view(), name="user-detail"),
+    path("profiles/", views.ProfileList.as_view(), name="profiles"),
+    path("profiles/<int:pk>/", views.ProfileDetail.as_view(), name="profile-detail"),
 ]
