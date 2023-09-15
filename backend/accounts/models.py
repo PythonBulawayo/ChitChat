@@ -12,7 +12,7 @@ class CustomUser(AbstractUser):
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     follows = models.ManyToManyField(
-        "self", related_name="followed_by", symmetrical=False, blank=True
+        "self", related_name="followers", symmetrical=False, blank=True
     )
 
     def __str__(self):

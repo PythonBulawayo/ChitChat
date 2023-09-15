@@ -33,15 +33,20 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 # Application definition
 
 INSTALLED_APPS = [
+    # Django apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Third Party apps
     "rest_framework",
+    # Local apps
     "api",
     "accounts",
+    # Dev tools
+    "django_extensions",
 ]
 
 MIDDLEWARE = [
@@ -134,6 +139,6 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
+        "rest_framework.permissions.IsAuthenticated",
     ]
 }
