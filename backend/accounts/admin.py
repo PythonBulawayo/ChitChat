@@ -8,8 +8,6 @@ from .models import CustomUser, Profile
 
 class ProfileInline(admin.StackedInline):
     model = Profile
-    # can_delete = False
-    # verbose_name_plural = "Profile"
 
 
 class CustomUserAdmin(UserAdmin):
