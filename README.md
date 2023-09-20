@@ -9,31 +9,31 @@ ChitChat is a Python-powered Social Network.
 
 2. create virtual environment
     ### Installing virtualenv
-    pip install virtualenv
+    ```pip install virtualenv```
 
     ### Creating virtual environment
-    python -m venv venv 
+    ```python -m venv venv```
 
     ### Activating the virtual environment
-    source venv/bin/activate
+    ```source venv/bin/activate```
 
 3. Install dependencies from the requirements text file.
-    pip install -r requirements.txt
+    ```pip install -r requirements.txt```
 
 ## Usage
 To run this project do the following:
 
 1. Make migrations:
-    python manage.py makemigrations
+```python manage.py makemigrations```
 
 2. Run migrations:
-    python manage.py migrate
+```python manage.py migrate```
 
 3. Create super user:
-    python manage.py createsuperuser
+```python manage.py createsuperuser```
 
 4. Run the server:
-    python manage.py runserver
+```python manage.py runserver```
 
 
 
