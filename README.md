@@ -18,7 +18,7 @@ ChitChat is a Python-powered Social Network.
     ```source venv/bin/activate```
 
 3. Install dependencies from the requirements text file.
-    ```pip install -r requirements.txt```
+```pip install -r requirements.txt```
 
 ## Usage
 To run this project do the following:
