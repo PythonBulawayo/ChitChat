@@ -1,0 +1,85 @@
+---
+- name: Install Prerequisites
+  ansible.builtin.apt:
+    name: aptitude
+    update_cache: yes
+    state: latest
+
+- name: Upgrade apt to the latest packages
+  apt:
+    upgrade: safe
+
+- name: Install required system packages
+  apt:
+    name: "{{ sys_packages}}"
+    state: latest
+
+- name: Make sure we have a 'prime' group
+  group:
+    name: prime
+    state: present
+
+- name: Allow 'prime' group to have passwordless sudo
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: "^%prime"
+    line: "%prime ALL=(ALL) NOPASSWD: ALL"
+    validate: "/usr/sbin/visudo -cf %s"
+
+- name: Create regular user with sudo priviledges
+  user:
+    name: "{{create_user}}"
+    state: present
+    groups: prime
+    append: true
+    create_home: true
+    shell: /bin/bash
+
+- name: Set authorised key for remote user
+  authorized_key:
+    user: "{{ create_user}}"
+    state: present
+    key: "{{copy_local_ssh_key}}"
+
+- name: Enable PubKey Authentication
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    state: present
+    regexp: "^#?PubkeyAuthentication"
+    line: "PubkeyAuthentication yes"
+
+- name: Disallow password authentication
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    state: present
+    regexp: "^#?PasswordAuthentication"
+    line: "PasswordAuthentication no"
+  register: disallow_pw
+
+- name: Disallow Root SSH access
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    state: present
+    regexp: "^#?PermitRootLogin"
+    line: "PermitRootLogin no"
+  register: disallow_root_ssh
+
+- name: Restart sshd
+  service:
+    name: sshd
+    state: restarted
+  when: disallow_pw.changed or disallow_root_ssh.changed
+
+- name: UFW - Allow SSH connections
+  ufw:
+    rule: allow
+    port: "{{ssh_port}}"
+    proto: tcp
+
+
+- name: UFW - Deny all other incoming traffic by default
+  ufw:
+    state: enabled
+    policy: deny
+    direction: incoming
