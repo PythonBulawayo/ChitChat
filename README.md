@@ -8,13 +8,13 @@ ChitChat is a Python-powered Social Network.
     cd backend
 
 2. create virtual environment
-    # Installing virtualenv
+    ### Installing virtualenv
     pip install virtualenv
 
-    # Creating virtual environment
+    ### Creating virtual environment
     python -m venv venv 
 
-    # Activating the virtual environment
+    ### Activating the virtual environment
     source venv/bin/activate
 
 3. Install dependencies from the requirements text file.
