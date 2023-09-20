@@ -24,7 +24,7 @@ ChitChat is a Python-powered Social Network.
 To run this project do the following:
 
 1. Make migrations:
-```python manage.py makemigrations```
+   -```python manage.py makemigrations```
 
 2. Run migrations:
 ```python manage.py migrate```
