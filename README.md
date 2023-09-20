@@ -20,21 +20,21 @@ ChitChat is a Python-powered Social Network.
 3. Install dependencies from the requirements text file.<br><br>
     ```pip install -r requirements.txt```
 
-    
+
 
 ## Usage
 To run this project do the following:
 
-1. Make migrations:<br><br>
+1. Make migrations:<br>
     ```python manage.py makemigrations```
 
-2. Run migrations:<br><br>
+2. Run migrations:<br>
     ```python manage.py migrate```
 
-3. Create super user:<br><br>
+3. Create super user:<br>
     ```python manage.py createsuperuser```
 
-4. Run the server:<br><br>
+4. Run the server:<br>
     ```python manage.py runserver```
 
 
