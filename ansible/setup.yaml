@@ -20,5 +20,6 @@
   roles:
     - role: security
     - role: docker
+    - role: common
 
 
