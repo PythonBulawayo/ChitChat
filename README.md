@@ -4,28 +4,40 @@ ChitChat is a Python-powered Social Network.
 
 ## Installation
 
-**TODO** Update the sections below:
+1. cd into backend folder
+    ```cd backend```
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+2. Create virtual environment
+    ### Creating virtual environment
+    ```python -m venv venv```
 
-```bash
-pip install foobar
-```
+    ### Activating the virtual environment
+    ```source venv/bin/activate```
+
+    ### Activating the virtual environment on windows
+    ```venv\Scripts\activate```
+
+3. Install dependencies from the requirements text file.<br>
+    ```pip install -r requirements.txt```
+
+
 
 ## Usage
+To run this project do the following:
 
-```python
-import foobar
+1. Make migrations:<br>
+    ```python manage.py makemigrations```
 
-# returns 'words'
-foobar.pluralize('word')
+2. Run migrations:<br>
+    ```python manage.py migrate```
 
-# returns 'geese'
-foobar.pluralize('goose')
+3. Create super user:<br>
+    ```python manage.py createsuperuser```
 
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
+4. Run the server:<br>
+    ```python manage.py runserver```
+
+
 
 ## Contributing
 
