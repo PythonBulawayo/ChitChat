@@ -116,3 +116,18 @@ class UnFollowUserView(APIView):
             {"message": f"you're no longer following {profile.user.username}"},
             status=200,
         )
+
+
+class SignUpView(APIView):
+    """
+    username: str
+    email: str
+    password: str
+    """
+
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)

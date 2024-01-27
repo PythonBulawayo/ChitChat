@@ -2,21 +2,11 @@ from accounts.models import Profile, CustomUser
 from rest_framework import serializers
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    url = serializers.HyperlinkedIdentityField(
-        view_name="api:user-detail",
-        lookup_field="pk",
-    )
-
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        lookup_field = "pk"
-        fields = [
-            "username",
-            "email",
-            "pk",
-            "url",
-        ]
+        # lookup_field = "pk"
+        exclude = ["password", "groups", "user_permissions", "is_staff", "is_active"]
 
 
 class FollowerSerializer(serializers.ModelSerializer):

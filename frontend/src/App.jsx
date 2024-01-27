@@ -1,4 +1,5 @@
 import Login from "./pages/auth";
+import SignUpView from "./pages/Signup";
 import UsersList from "./pages/UsersList";
 import { Routes, Route } from "react-router-dom";
 
@@ -7,6 +8,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Login />} />;
       <Route path="/users" element={<UsersList />} />
+      <Route path="/signup" element={<SignUpView />} />
     </Routes>
   );
 }
