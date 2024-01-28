@@ -4,6 +4,8 @@ ChitChat is a Python-powered Social Network.
 
 ## Installation
 
+### Backend
+
 1. cd into backend folder
     ```cd backend```
 
@@ -36,6 +38,17 @@ To run this project do the following:
 
 4. Run the server:<br>
     ```python manage.py runserver```
+
+
+### FrontEnd
+1. cd into the frontend folder
+```cd frontend```
+
+2. Install dependencies
+```npm install```
+
+3. Run the development server
+```npm run dev```
 
 
 
