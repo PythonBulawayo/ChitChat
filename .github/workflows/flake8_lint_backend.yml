@@ -1,0 +1,43 @@
+name: Flake8_Lint_Backend
+
+on: [push, pull_request]
+
+jobs:
+  FlakeLint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+    name: FlakeLint
+    steps:
+      - name: Check out source repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }} environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Python environment report
+        run: python -c "import sys; print(sys.version)"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flake8 && /backend/requirement.txt
+
+      - name: Run ${{ matrix.python-version }} platform tests (default)
+        uses: py-actions/flake8@master
+        with:
+          path: "backend" # other test fail with flake
+
+      - name: Run flake for python ${{ matrix.python-version }} platform tests (with args)
+        uses: py-actions/flake8@master
+        with:
+          update-pip: "true"
+          #ignore: "F401"
+          #max-line-length: "100"
+          args: "--quiet"
+          path: "backend"
+          flake8-version: "main"
+          plugins: "flake8-bugbear==22.1.11 flake8-black"
