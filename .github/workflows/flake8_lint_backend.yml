@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8 && /backend/requirement.txt
+          pip install flake8 && /backend/requirements.txt
 
       - name: Run ${{ matrix.python-version }} platform tests (default)
         uses: py-actions/flake8@master
