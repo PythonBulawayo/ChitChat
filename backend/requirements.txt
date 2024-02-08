@@ -9,6 +9,7 @@ click==8.1.7
 curtsies==0.4.2
 cwcwidth==0.1.8
 Django==4.2.4
+django-cors-headers==4.3.1
 django-extensions==3.2.3
 django-filter==23.2
 djangorestframework==3.14.0
