@@ -43,9 +43,11 @@ INSTALLED_APPS = [
     # Third Party apps
     "rest_framework",
     "corsheaders",
+    "django_filters",
     # Local apps
     "api",
     "accounts",
+    "core",
     # Dev tools
     "django_extensions",
 ]
@@ -142,7 +144,8 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     "DEFAULT_PERMISSION_CLASSES": [
         # "rest_framework.permissions.IsAuthenticated",
-    ]
+    ],
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
 
 

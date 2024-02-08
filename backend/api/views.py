@@ -1,10 +1,12 @@
+import django_filters.rest_framework
 from django.shortcuts import render
 from accounts.models import Profile, CustomUser
+from core.models import Post
 from django.conf import settings
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer, ProfileSerializer
+from .serializers import UserSerializer, ProfileSerializer, PostSerializer
 
 User = CustomUser
 
@@ -26,6 +28,8 @@ class APIRootView(APIView):
                 },
                 "follow": {f"{base_url}/api/follow/<str:username>/"},
                 "unfollow": {f"{base_url}/api/unfollow/<str:username>/"},
+                "posts": {f"{base_url}/api/posts/"},
+                "post_detail": {f"{base_url}/api/posts/<int:pk>/"},
             }
         ]
 
@@ -58,7 +62,6 @@ class ProfileList(generics.ListAPIView):
 
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    # permission_classes = [permissions.IsAuthenticated]
 
 
 class ProfileDetail(generics.RetrieveAPIView):
@@ -120,9 +123,12 @@ class UnFollowUserView(APIView):
 
 class SignUpView(APIView):
     """
-    username: str
-    email: str
-    password: str
+    View to register a new user
+
+    Args:
+        username: str
+        email: str
+        password: str
     """
 
     def post(self, request):
@@ -131,3 +137,28 @@ class SignUpView(APIView):
             serializer.save()
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
+
+
+class PostList(generics.ListAPIView):
+    """
+    View to list all posts with filtering.
+    """
+
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    filter_backends = [
+        filters.OrderingFilter,
+        django_filters.rest_framework.DjangoFilterBackend,
+    ]
+    ordering_fields = ["created_at", "likes_count"]
+    filterset_fields = ["user_profile", "created_at", "likes_count"]
+
+
+class PostDetail(generics.RetrieveAPIView):
+    """
+    View to show a single post.
+    """
+
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    lookup_field = "pk"

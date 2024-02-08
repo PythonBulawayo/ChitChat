@@ -10,7 +10,6 @@ urlpatterns = [
     path("api/users/", views.CustomUserList.as_view(), name="users"),
     path("api/users/<int:pk>/", views.CustomUserDetail.as_view(), name="user-detail"),
     path("api/profiles/", views.ProfileList.as_view(), name="profiles"),
-    path("api/signup", views.SignUpView.as_view(), name="signup-view"),
     path(
         "api/profiles/<int:pk>/", views.ProfileDetail.as_view(), name="profile-detail"
     ),
@@ -22,4 +21,7 @@ urlpatterns = [
         views.UnFollowUserView.as_view(),
         name="unfollow-user",
     ),
+    path("api/posts/", views.PostList.as_view(), name="posts-list"),
+    path("api/posts/<int:pk>/", views.PostDetail.as_view(), name="post-detail"),
+    path("api/signup", views.SignUpView.as_view(), name="signup-view"),
 ]
