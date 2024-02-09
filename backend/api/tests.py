@@ -15,6 +15,9 @@ class PostsTestCase(TestCase):
         self.post = Post.objects.create(
             user_profile=self.user.profile, body="This is a test post", likes_count=1
         )
+        self.relative_profile_url = reverse(
+            "api:profile-detail", kwargs={"pk": self.post.user_profile.id}
+        )
 
     def test_post_creation(self):
         self.assertEqual(self.post.body, "This is a test post")
@@ -30,10 +33,7 @@ class PostsTestCase(TestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json()["likes_count"], 1)
-        relative_profile_url = reverse(
-            "api:profile-detail", kwargs={"pk": self.post.user_profile.id}
-        )
-        self.assertContains(response, relative_profile_url)
+        self.assertContains(response, self.relative_profile_url)
         self.assertContains(response, "This is a test post")
 
     def test_post_list_view(self):
@@ -54,3 +54,19 @@ class PostsTestCase(TestCase):
 
         self.assertEqual(Post.objects.all().count(), 0)
         self.assertEqual(self.user.profile.posts.all().count(), 0)
+
+    def test_post_create_view(self):
+        url = reverse("api:post-create")
+        response = self.client.post(url, {"body": "This is another post"})
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.client.force_login(self.user)
+        response = self.client.post(url, {"body": "This is another post"})
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Post.objects.all().count(), 2)
+        self.assertEqual(self.user.profile.posts.all().count(), 2)
+        self.assertEqual(response.json()["body"], "This is another post")
+        self.assertEqual(response.json()["likes_count"], 0)
+        self.assertContains(
+            response, self.relative_profile_url, status_code=status.HTTP_201_CREATED
+        )

@@ -1,13 +1,12 @@
 import django_filters.rest_framework
-from django.shortcuts import render
-from accounts.models import Profile, CustomUser
-from core.models import Post
-from django.conf import settings
-from rest_framework import generics, permissions, filters
+from rest_framework import filters, generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserSerializer, ProfileSerializer, PostSerializer
-from rest_framework import status
+
+from accounts.models import CustomUser, Profile
+from core.models import Post
+
+from .serializers import PostSerializer, ProfileSerializer, UserSerializer
 
 User = CustomUser
 
@@ -31,6 +30,8 @@ class APIRootView(APIView):
                 "unfollow": {f"{base_url}/api/unfollow/<str:username>/"},
                 "posts": {f"{base_url}/api/posts/"},
                 "post_detail": {f"{base_url}/api/posts/<int:pk>/"},
+                "post_create": {f"{base_url}/api/posts/new/"},
+                "post_delete": {f"{base_url}/api/posts/delete/<int:pk>/"},
             }
         ]
 
@@ -138,6 +139,19 @@ class SignUpView(APIView):
             serializer.save()
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
+
+
+class PostCreate(generics.CreateAPIView):
+    """
+    View to create a new post
+    """
+
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user_profile=self.request.user.profile)
 
 
 class PostList(generics.ListAPIView):

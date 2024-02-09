@@ -1,5 +1,4 @@
 from django.urls import path, include
-from rest_framework import routers
 from api import views
 
 
@@ -22,6 +21,7 @@ urlpatterns = [
         name="unfollow-user",
     ),
     path("api/posts/", views.PostList.as_view(), name="posts-list"),
+    path("api/posts/new/", views.PostCreate.as_view(), name="post-create"),
     path("api/posts/<int:pk>/", views.PostDetail.as_view(), name="post-detail"),
     path("api/posts/delete/<int:pk>/", views.PostDelete.as_view(), name="post-delete"),
     path("api/signup", views.SignUpView.as_view(), name="signup-view"),
