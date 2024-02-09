@@ -23,5 +23,6 @@ urlpatterns = [
     ),
     path("api/posts/", views.PostList.as_view(), name="posts-list"),
     path("api/posts/<int:pk>/", views.PostDetail.as_view(), name="post-detail"),
+    path("api/posts/delete/<int:pk>/", views.PostDelete.as_view(), name="post-delete"),
     path("api/signup", views.SignUpView.as_view(), name="signup-view"),
 ]

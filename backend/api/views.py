@@ -7,6 +7,7 @@ from rest_framework import generics, permissions, filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer, ProfileSerializer, PostSerializer
+from rest_framework import status
 
 User = CustomUser
 
@@ -162,3 +163,20 @@ class PostDetail(generics.RetrieveAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     lookup_field = "pk"
+
+
+class PostDelete(generics.DestroyAPIView):
+    """
+    View to delete a single post.
+    """
+
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    lookup_field = "pk"
+
+    def delete(self, request, *args, **kwargs):
+        post = self.get_object()
+        if post.user_profile.user == request.user:
+            return self.destroy(request, *args, **kwargs)
+        else:
+            return Response(status=status.HTTP_403_FORBIDDEN)
