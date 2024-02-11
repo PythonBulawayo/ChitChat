@@ -134,6 +134,10 @@ The next step is to clone the forked repository to your machine. Go to your GitH
 Open a terminal and run the following git command:<br>
     ```git clone https://github.com/PythonBulawayo/ChitChat.git```
 
+If you prefer using SSH for Git operations, you can clone the repository using the SSH URL. 
+
+Open a terminal and run the following git command:<br>
+    ```git clone git@github.com:PythonBulawayo/ChitChat.git```
 
 ### Create a branch
 
