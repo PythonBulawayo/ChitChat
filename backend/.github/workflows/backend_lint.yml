@@ -1,4 +1,4 @@
-name: Backend_Pylint
+name: Backend_Pylint_Lint
 
 on:
   pull_request:
