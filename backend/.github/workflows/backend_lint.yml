@@ -3,9 +3,11 @@ name: Backend_Pylint_Lint
 on:
   pull_request:
     branches:
+      - main
       - develop
   push:
     branches:
+      - main
       - develop
 
 jobs:
