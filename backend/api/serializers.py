@@ -1,4 +1,5 @@
 from accounts.models import Profile, CustomUser
+from core.models import Post
 from rest_framework import serializers
 
 
@@ -38,3 +39,18 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = "__all__"
         lookup_field = "pk"
+
+
+class PostSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name="api:post-detail", lookup_field="pk"
+    )
+    user_profile = serializers.HyperlinkedRelatedField(
+        view_name="api:profile-detail", read_only=True
+    )
+
+    class Meta:
+        model = Post
+        fields = "__all__"
+        lookup_field = "pk"
+        extra_kwargs = {"url": {"lookup_field": "pk"}}
