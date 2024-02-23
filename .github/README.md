@@ -188,15 +188,15 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Fork this repository by clicking on the fork button on the top of this page. This will create a copy of this repository in your account.
 
-![Fork Screenshot](images/fork-screenshot.png)
+![Fork Screenshot](./images/fork-screenshot.png)
 
 ### Clone the repository
 
 The next step is to clone the forked repository to your machine. Go to your GitHub account, open the forked repository, click on the code button and then click the copy to clipboard icon. The copied url should look like this: https://github.com/PythonBulawayo/ChitChat.git
 
-![Clone screenshot](images/clone-screenshot.png)
+![Clone screenshot](./images/clone-screenshot.png)
 
-![Clipboard screenshot](images/clipboard-screenshot.png)
+![Clipboard screenshot](./images/clipboard-screenshot.png)
 
 Open a terminal and run the following git command:
 ```sh
@@ -287,3 +287,7 @@ Your changes will thoroughly be reviewed by the collaborator and other contribut
 **Merging the Pull Request:**
 
 Once your pull request has been reviewed and all checks pass, it will be merged into the target branch. 
+
+## License
+
+Licensed under [MIT](./LICENSE.md)
