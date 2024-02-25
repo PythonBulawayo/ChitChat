@@ -9,3 +9,6 @@ class Post(models.Model):
     user_profile = models.ForeignKey(
         Profile, related_name="posts", on_delete=models.DO_NOTHING
     )
+
+    def __str__(self):
+        return f"{self.created_at.date()} - {self.user_profile.user} - {self.body}"
