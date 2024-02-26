@@ -1,120 +1,184 @@
-# ChitChat Project Readme
+# Project Documentation
 
-ChitChat is a Python-powered Social Network.
+[![Open in GitPod](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/PythonBulawayo/ChitChat) 
+
+ChitChat is a Python powered social media platform initiated by Buluwayo Python developers.
+
+The project is built using [Django](https://www.djangoproject.com/) for the backend and [React JS](https://react.dev/) for the frontend. The backend is located in the `backend` folder while the frontend is in the `frontend` folder.
+
 
 ## Installation
 
-### Backend
+Here's how to get yourself started with ChitChat on your machine.
 
-1. cd into backend folder
-    ```cd backend```
+### Backend Initialization
 
-2. Create virtual environment
-    ### Creating virtual environment
-    ```python -m venv venv```
+Move into the backend folder from your terminal with the following command
 
-    ### Activating the virtual environment
-    ```source venv/bin/activate```
+```sh
+cd backend
+```
 
-    ### Activating the virtual environment on windows
-    ```venv\Scripts\activate```
+Initialize the virtual environment 
 
-3. Install dependencies from the requirements text file.<br>
-    ```pip install -r requirements.txt```
+```sh
+python -m venv venv
+```
+
+Activate the virtual environment 
+
+```sh
+# Unix
+source venv/bin/activate
+
+# Windows
+venv\Scripts\activate
+```
+
+Install dependencies from the **requirements.txt** text file
+
+```sh
+pip install -r requirements.txt
+```
+
+### Backend Server Startup
+
+To start your server, run the following commands from the **backend** folder, on your terminal.
+
+Create database migrations from codebase
+
+```sh
+python manage.py makemigrations
+```
+
+Install the database migration
+
+```sh
+python manage.py migrate
+```
+
+Create a project super user
+
+```sh
+python manage.py createsuperuser
+```
+
+Run the server
+
+```sh
+python manage.py runserver
+```
 
 
+### Frontend Initialization
 
-## Usage
-To run this project do the following:
+Move into the **frontend** folder
 
-### Migrations
+```sh
+cd frontend
+```
 
-1. Make migrations:<br>
-    ```python manage.py makemigrations```
+Install npm modules
 
-2. Run migrations:<br>
-    ```python manage.py migrate```
+```sh
+npm install
+```
 
-3. Create super user:<br>
-    ```python manage.py createsuperuser```
+Run the development server
 
-4. Run the server:<br>
-    ```python manage.py runserver```
+```sh
+npm run dev
+```
 
-
-### FrontEnd
-1. cd into the frontend folder
-```cd frontend```
-
-2. Install dependencies
-```npm install```
-
-3. Run the development server
-```npm run dev```
-
-
-### Docker
+### Setting Up Docker (Optional)
 
 #### Install Docker on Windows
-1. Download Docker Desktop from the official Docker website:  <a href="https://docs.docker.com/desktop/install/windows-install/">Docker Desktop for Windows</a>
-2. Follow the on-screen instructions to complete the installation.
 
-3. Once the installation is complete, Docker Desktop will be running on your system.
+Download Docker Desktop from the official Docker website: [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/) 
 
-#### Install Docker on macOS
-1. Download Docker Desktop from the official Docker website: <a href="https://docs.docker.com/desktop/install/mac-install/">Docker Desktop for Mac</a>
+Follow the on-screen instructions to complete the installation.
 
-2. Double-click the installer package to mount the Docker disk image.
+Once the installation is complete, Docker Desktop will be running on your system.
 
-3. Drag the Docker icon to the Applications folder.
+#### Install Docker on MacOS
 
-4. Open Docker from the Applications folder and follow the on-screen instructions to complete the installation.
+Download Docker Desktop from the official Docker website: [Docker Desktop for Mac](https://docs.docker.com/desktop/install/mac-install/) 
 
-5. Once the installation is complete, Docker Desktop will be running on your system.
+Double-click the installer package to mount the Docker disk image.
+
+Drag the Docker icon to the Applications folder.
+
+Open Docker from the Applications folder and follow the on-screen instructions to complete the installation.
+
+Once the installation is complete, Docker Desktop will be running on your system.
 
 #### Install Docker on Linux
-NB: Refer to the official Docker documentation for updates: <a href="https://docs.docker.com/engine/install/ubuntu/">Get Docker for Linux.</a>
 
-1. Open a terminal window.
+NB: Refer to the official Docker documentation for updates: [Docker Desktop for Linux (Ubuntu)](https://docs.docker.com/engine/install/ubuntu/)
 
-2. Update the package index:<br>
-    ```sudo apt-get update```
+Open a terminal window.
 
-3. Install Docker dependencies:<br>
-    ```sudo apt-get install apt-transport-https ca-certificates curl software-properties-common```
+Update the package index:
 
-4. Add the Docker GPG key:<br>
-    ```curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg```
+```sh
+sudo apt update
+```
 
-5. Set up the stable Docker repository:<br>
-    ```echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null```
+Install Docker dependencies:
 
-6. Update the package index again:<br>
-    ```sudo apt-get update```
+```sh
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+```
 
-7. Install Docker:<br>
-```sudo apt-get install docker-ce docker-ce-cli containerd.io```
+Add the Docker GPG key:
 
-Docker should now be installed on your Linux system.
+```sh
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
 
+Set up the stable Docker repository:
 
+```sh
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
 
-Check if Docker is installed correctly:<br>
-    ```docker --version```
+Update the package index again:
+
+```sh
+sudo apt update
+```
+
+Install Docker:
+
+```sh
+sudo apt install docker-ce docker-ce-cli containerd.io
+```
+
+Docker should now be installed on your Linux system. Check if Docker is installed correctly:
+
+```sh
+docker --version
+```
 
 #### Run the application
+
 To run this project using docker, please follow these steps:
 
-1. Change to the repository directory on your computer (if you are not already there):<br>
-    ```cd chitchat```<br>
-    In this directory you should see a file:<br>
-     - docker-compose.yaml
+Change to the repository directory on your computer (if you are not already there):
 
-2. Then in your terminal, run the following command:<br>
-    ```docker compose up --build```
+```sh
+cd chitchat
+```
+
+In this directory you should see a `docker-compose.yaml` file
+
+Then in your terminal, run the following command:
+
+```sh
+docker compose up --build
+```
 
 This should bring up the entire project. Good luck!
-
 
 ## Contributing
 
@@ -122,76 +186,108 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ### Fork the repository
 
-Fork this repository by clicking on the fork button on the top of this page. This will create a copy of this repository in your account.<br>
-    <img src="readme/fork-screenshot.png" alt="Fork screenshot" width="400" height="120">
+Fork this repository by clicking on the fork button on the top of this page. This will create a copy of this repository in your account.
+
+![Fork Screenshot](./documentation/images/fork-screenshot.png)
 
 ### Clone the repository
 
-The next step is to clone the forked repository to your machine. Go to your GitHub account, open the forked repository, click on the code button and then click the copy to clipboard icon. The copied url should look like this: https://github.com/PythonBulawayo/ChitChat.git<br>
-    <img src="readme/clone-screenshot.png" alt="Clone screenshot" width="400" height="120"><br><br>
-    <img src="readme/clipboard-screenshot.png" alt="Clipboard screenshot" width="400" height="120">
+The next step is to clone the forked repository to your machine. Go to your GitHub account, open the forked repository, click on the code button and then click the copy to clipboard icon. The copied url should look like this: https://github.com/PythonBulawayo/ChitChat.git
 
-Open a terminal and run the following git command:<br>
-    ```git clone https://github.com/PythonBulawayo/ChitChat.git```
+![Clone screenshot](./documentation/images/clone-screenshot.png)
+
+![Clipboard screenshot](./documentation/images/clipboard-screenshot.png)
+
+Open a terminal and run the following git command:
+```sh
+git clone https://github.com/PythonBulawayo/ChitChat.git
+```
 
 If you prefer using SSH for Git operations, you can clone the repository using the SSH URL. 
 
-Open a terminal and run the following git command:<br>
-    ```git clone git@github.com:PythonBulawayo/ChitChat.git```
+Open a terminal and run the following git command:
+```sh
+git clone git@github.com:PythonBulawayo/ChitChat.git
+```
 
 ### Create a branch
 
 Change to the repository directory on your computer (if you are not already there):<br>
-    ```cd chitchat```
+```sh
+cd chitchat
+```
 
-Now create a branch using the git switch command:<br>
-    ```git switch -c your-new-branch-name```
+Now create a branch using the git switch command:
+```sh
+git switch -c your-new-branch-name
+```
 
-For example:<br>
-    ```git switch -c update-documentation```
+For example:
+```sh
+git switch -c update-documentation
+```
 
-### Make necessary changes and commit those changes
+### Commit your changes
 
-1. Make necessary changes.<br>
+Make necessary changes.
 
-2. To see the changes you have made, use the git status command:<br>
-    ```git status```
+To see the changes you have made, use the git status command:
 
-3. Add those changes to the branch you just created using the git add command:<br>
-    ```git add the-file-you-made-changes-to```
+```sh
+git status
+```
 
-    For example:<br>
-    ```git add read.md```
+Add those changes to the branch you just created using the git add command:
 
-4. Commit the changes using the git commit command:<br>
-    ```git commit -m "Update README with new information"```
+```sh
+git add the-file-you-made-changes-to
+```
+
+For example:
+
+```sh
+git add read.md
+```
+
+Commit the changes using the git commit command:
+
+```sh
+git commit -m "Update README with new information"
+```
 
 ### Push changes to GitHub
 
-Push your changes using the git push command:<br>
-    ```git push -u origin your-branch-name```
+Push your changes using the git push command:
+
+```sh
+git push -u origin your-branch-name
+```
 
 Replace your-branch-name with the name of the branch you created earlier.
 
-For example:<br>
-    ```git push -u origin update-documentation```
+For example:
+```sh
+git push -u origin update-documentation
+```
 
 ### Submit your changes for review
 
 If you go to your repository on GitHub, you'll see a Compare & pull request button. Click on that button.
 
-1. create a pull request
+1. Create a pull request
 
 2. Now submit the pull request.
 
 ### What next?
 
-1. Reviewing your Changes:<br>
+**Reviewing your Changes:**
+
 Your changes will thoroughly be reviewed by the collaborator and other contributors in your pull request to ensure that the changes align with the purpose of the pull request.
 
-2. Merging the Pull Request:<br>
+**Merging the Pull Request:**
+
 Once your pull request has been reviewed and all checks pass, it will be merged into the target branch. 
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+Licensed under [MIT](./LICENSE.md)
