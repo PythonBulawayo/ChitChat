@@ -70,3 +70,14 @@ class PostsTestCase(TestCase):
         self.assertContains(
             response, self.relative_profile_url, status_code=status.HTTP_201_CREATED
         )
+
+class APIRootTestCase(TestCase):
+    def test_root_status_code(self):
+        """
+        Test APIRootView for status code 200.
+        """
+        url = reverse("api:api-root")
+        response = self.client.get(url, HTTP_HOST="example.com")
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        # Assert that the response isn't empty and contains links
+        self.assertTrue(response.content)
