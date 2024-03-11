@@ -79,5 +79,27 @@ class APIRootTestCase(TestCase):
         url = reverse("api:api-root")
         response = self.client.get(url, HTTP_HOST="example.com")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        # Assert that the response isn't empty and contains links
         self.assertTrue(response.content)
+
+class UserTestCase(TestCase):
+    def setUp(self):
+        self.user = CustomUser.objects.create(
+            username="test_user",
+            email="test_user@example.com",
+            password="test_password",
+        )
+
+        self.client.force_login(self.user)
+
+    def test_user_detail_view(self):
+        """
+        Test User detail view for user information.
+        """
+        url = reverse("api:user-detail", kwargs={"pk": self.user.pk})
+        response = self.client.get(url)
+        
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(url, f'/api/users/{self.user.pk}/')
+        self.assertEqual(response.json()["username"], "test_user")
+        self.assertEqual(response.json()["email"], "test_user@example.com")
+        
