@@ -71,6 +71,7 @@ class PostsTestCase(TestCase):
             response, self.relative_profile_url, status_code=status.HTTP_201_CREATED
         )
 
+
 class APIRootTestCase(TestCase):
     def test_root_status_code(self):
         """
@@ -80,6 +81,7 @@ class APIRootTestCase(TestCase):
         response = self.client.get(url, HTTP_HOST="example.com")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(response.content)
+
 
 class UserTestCase(TestCase):
     def setUp(self):
@@ -97,7 +99,6 @@ class UserTestCase(TestCase):
         """
         url = reverse("api:user-detail", kwargs={"pk": self.user.pk})
         response = self.client.get(url)
-        
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(url, f'/api/users/{self.user.pk}/')
         self.assertEqual(response.json()["username"], "test_user")
