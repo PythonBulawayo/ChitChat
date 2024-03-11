@@ -103,4 +103,3 @@ class UserTestCase(TestCase):
         self.assertEqual(url, f'/api/users/{self.user.pk}/')
         self.assertEqual(response.json()["username"], "test_user")
         self.assertEqual(response.json()["email"], "test_user@example.com")
-        
