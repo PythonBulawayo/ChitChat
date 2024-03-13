@@ -5,10 +5,14 @@ on:
     branches:
       - main
       - develop
+    paths:
+      - 'backend/**'
   push:
     branches:
       - main
       - develop
+    paths:
+      - 'backend/**'
 
 jobs:
   build:
