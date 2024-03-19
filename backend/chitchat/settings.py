@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "accounts",
     # Dev tools
     "django_extensions",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
