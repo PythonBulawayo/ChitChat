@@ -2,6 +2,7 @@
 import { Button, Card, TextInput, Avatar } from "flowbite-react";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Registration() {
 	const [data, setData] = useState({
@@ -11,6 +12,8 @@ export default function Registration() {
 		last_name: "",
 		username: "",
 	});
+
+	const navigate = useNavigate();
 
 	const onChange = (e) => {
 		setData({ ...data, [e.target.id]: e.target.value });
@@ -28,7 +31,8 @@ export default function Registration() {
 		axios
 			.post("http://localhost:8000/api/signup", data)
 			.then(() => {
-				alert("Successfully signed up");
+				alert("Success");
+				navigate("/users");
 			})
 			.catch(() => {
 				alert("Failed to submit");
@@ -36,7 +40,7 @@ export default function Registration() {
 	};
 
 	return (
-		<center style={{ marginTop: "250px" }}>
+		<center style={{ marginTop: "5vh" }}>
 			<Card className="max-w-md">
 				<Avatar img="/user.png" rounded size="xl" />
 				<h3 className="text-center text-xl mb-4 mt-4">Welcome to Chit-Chat</h3>

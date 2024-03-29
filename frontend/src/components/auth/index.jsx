@@ -1,12 +1,18 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Button, Card, TextInput, Avatar } from "flowbite-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
 	const [data, setData] = useState({
 		email: "",
 		password: "",
 	});
+
+	const navigate = useNavigate();
+	const handleNavigation = () => {
+		navigate("/signup");
+	};
 
 	const onChange = (e) => {
 		setData({ ...data, [e.target.id]: e.target.value });
@@ -41,7 +47,9 @@ export default function Login() {
 						<Button type="submit" style={{ backgroundColor: "green" }}>
 							Sign In
 						</Button>
-						<Button type="submit">Create Account</Button>
+						<Button type="button" onClick={handleNavigation}>
+							Create Account
+						</Button>
 					</form>
 				</Card>
 			</center>
