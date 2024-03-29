@@ -13,7 +13,7 @@ export default function Login() {
 	};
 	return (
 		<>
-			<center style={{ marginTop: "250px" }}>
+			<center style={{ marginTop: "5vh" }}>
 				<Card className="max-w-md">
 					<Avatar img="/user.png" rounded size="xl" />
 					<h3 className="text-center text-xl mb-4 mt-4">
@@ -38,7 +38,10 @@ export default function Login() {
 							/>
 						</div>
 
-						<Button type="submit">Submit</Button>
+						<Button type="submit" style={{ backgroundColor: "green" }}>
+							Sign In
+						</Button>
+						<Button type="submit">Create Account</Button>
 					</form>
 				</Card>
 			</center>
