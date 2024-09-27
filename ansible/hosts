@@ -1,6 +1,8 @@
-[aardwolf]
-65.21.1.8
+[cybertron]
+54.220.70.177
 
-[aardwolf:vars]
-create_user=optimus
-ssh_port=1985
+[cybertron:vars]
+ansible_user=optimus
+repo_folder="/home/{{ansible_user}}/chitchat"
+repo_name=PythonBulawayo/ChitChat
+repo_branch=deploy

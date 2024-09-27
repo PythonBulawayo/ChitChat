@@ -1,0 +1,26 @@
+---
+
+- hosts: cybertron
+  gather_facts: true
+  become_user: "{{ ansible_user }}"
+  
+  tasks:
+
+    - name: Checkout Repository
+      git:
+        repo: git@github.com:{{ repo_name }}.git
+        accept_hostkey: true
+        dest: "{{ repo_folder }}"
+        version: "{{ repo_branch }}"
+
+        key_file: /home/{{ ansible_user }}/.ssh/id_ed25519
+    
+    - name: Build and Start Project
+      command:
+        docker compose up --build --detach
+      args:
+        chdir: "{{ repo_folder }}"
+      register: build_output
+    
+    - debug:
+        var: build_output
