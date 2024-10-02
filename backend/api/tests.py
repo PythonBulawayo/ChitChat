@@ -100,6 +100,6 @@ class UserTestCase(TestCase):
         url = reverse("api:user-detail", kwargs={"pk": self.user.pk})
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(url, f'/api/users/{self.user.pk}/')
+        self.assertEqual(url, f"/api/users/{self.user.pk}/")
         self.assertEqual(response.json()["username"], "test_user")
         self.assertEqual(response.json()["email"], "test_user@example.com")
