@@ -66,9 +66,9 @@ class ProfileList(generics.ListAPIView):
     serializer_class = ProfileSerializer
 
 
-class ProfileDetail(generics.RetrieveAPIView):
+class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
-    View to view details of a profile
+    View to view or update profile details
 
     """
 
