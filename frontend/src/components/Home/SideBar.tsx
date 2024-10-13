@@ -16,7 +16,11 @@ const SideBar = () => {
 					<p className="text-base font-normal text-center">{bio}</p>
 				</div>
 				<div className="md:w-[6rem] md:h-[6rem] h-[4rem] w-[4rem] rounded-full absolute top-20 left-1/2 transform -translate-x-1/2 md:left-[6rem] md:translate-x-0 border-4 border-white flex items-center justify-center">
-					<img src={images.userProfile} alt="profile" className="object-fill" />
+					<img
+						src={images.profilePicture}
+						alt="profile"
+						className="object-cover w-full h-full rounded-full"
+					/>
 				</div>
 			</div>
 			<div className="w-full p-4  border-gray-100 border-b-2">

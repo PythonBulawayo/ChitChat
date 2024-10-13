@@ -108,12 +108,12 @@ export const NavBar = () => {
 				<div className="relative hidden md:block">
 					<button
 						onClick={() => setDropdownOpen(!dropdownOpen)}
-						className="text-white hover:text-primary-100 focus:outline-none"
+						className="text-white hover:text-primary-100 focus:outline-none w-12 h-12"
 					>
 						<img
-							src={images.userProfile}
+							src={images.profilePicture}
 							alt="profile"
-							className="w-12 h-12 rounded-full"
+							className="object-cover w-full h-full rounded-full"
 						/>
 					</button>
 					{dropdownOpen && (
