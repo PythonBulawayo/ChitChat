@@ -13,7 +13,9 @@ export const Home = () => {
 					<SideBar />
 					<Suggested />
 				</div>
-				<MainCanvas />
+				<div className="w-2/3 flex flex-col space-y-4">
+					<MainCanvas />
+				</div>
 				<div className="flex w-1/3 flex-col space-y-5">
 					<RightSIdeBar />
 					<TopJobs />

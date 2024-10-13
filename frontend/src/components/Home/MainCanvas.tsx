@@ -1,7 +1,12 @@
 import React from "react";
+import CreatePost from "./CreatePost";
 
 const MainCanvas = () => {
-	return <div className="w-2/3">MainCanvas</div>;
+	return (
+		<div className="w-full">
+			<CreatePost />
+		</div>
+	);
 };
 
 export default MainCanvas;
