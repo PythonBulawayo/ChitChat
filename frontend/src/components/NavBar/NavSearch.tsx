@@ -24,13 +24,13 @@ const NavSearch = () => {
 				<input
 					type="search"
 					id="default-search"
-					className="block w-full p-3 ps-10 text-sm text-gray-900 border border-primary-300 rounded-lg bg-gray-50 focus:ring-primary-200 focus:border-primary-200 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+					className="block w-full p-3 ps-10 text-sm text-gray-900 border border-primary-300 rounded-lg bg-gray-50 focus:ring-primary-200 focus:border-primary-200"
 					placeholder="Search..."
 					required
 				/>
 				<button
 					type="submit"
-					className="text-white absolute end-2.5 top-1 bg-secondary-500 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2"
+					className="text-white absolute end-2.5 top-1 bg-primary-500 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2"
 				>
 					Search
 				</button>

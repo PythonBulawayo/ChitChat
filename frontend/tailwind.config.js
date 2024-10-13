@@ -16,20 +16,8 @@ export default {
 					400: "#ff1a1a",
 					500: "#ff0000", // Base red
 				},
-				secondary: {
-					50: "#ffeaea",
-					100: "#ffcccc",
-					200: "#ffadad",
-					300: "#ff8f8f",
-					400: "#ff7070",
-					500: "#ff4d4d", // Base lighter red
-				},
-				card: {
-					50: "#fff2f2",
-					100: "#ffe6e6",
-					200: "#ffcccc",
-					300: "#ffb3b3",
-					400: "#ff9999",
+				subheading: {
+					100: "#5c5b5b ",
 				},
 			},
 			typography: {

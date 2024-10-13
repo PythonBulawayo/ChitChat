@@ -9,7 +9,7 @@ export const NavBar = () => {
 	const [navOpen, setNavOpen] = useState(false);
 
 	return (
-		<nav className="bg-primary-500 w-full flex-wrap lg:flex-nowrap lg:w-full flex items-center md:justify-around p-3 justify-between">
+		<nav className="bg-primary-500 w-full flex-wrap lg:flex-nowrap lg:w-full flex items-center md:justify-around p-3 justify-between fixed z-50 top-0">
 			<div className="flex items-center justify-between space-x-4 w-full md:w-fit">
 				<a href="/" className="flex items-center space-x-2">
 					<span className="text-white md:text-4xl font-bold text-2xl">
@@ -17,7 +17,6 @@ export const NavBar = () => {
 					</span>
 				</a>
 				<div className="flex items-center justify-center space-x-2">
-					
 					<form className="relative hidden lg:block">
 						<div className="relative">
 							<div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -40,13 +39,13 @@ export const NavBar = () => {
 							<input
 								type="search"
 								id="default-search"
-								className="block w-full p-3 ps-10 text-sm text-gray-900 border border-primary-300 rounded-lg bg-gray-50 focus:ring-primary-200 focus:border-primary-200 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+								className="block w-full p-3 ps-10 text-sm text-gray-900 border border-primary-300 rounded-sm bg-gray-50 focus:ring-primary-200 focus:border-primary-200 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
 								placeholder="Search..."
 								required
 							/>
 							<button
 								type="submit"
-								className="text-white absolute end-2.5 top-1 bg-secondary-500 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2"
+								className="text-white absolute end-2.5 top-1 bg-primary-500 hover:bg-primary-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-sm text-sm px-4 py-2"
 							>
 								Search
 							</button>

@@ -13,20 +13,22 @@ import NotificationsPage from "./pages/Notifications/NotificationsPage";
 
 function App() {
 	return (
-		<div className="w-full h-screen">
+		<>
 			<NavBar />
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/login" element={<Login />} />;
-				<Route path="/signup" element={<SignUpView />} />
-				<Route path="/jobs" element={<JobsPage />} />
-				<Route path="/campanies" element={<Campanies />} />
-				<Route path="/notifications" element={<NotificationsPage />} />
-				<Route path="/projects" element={<Projects />} />
-				<Route path="/messages" element={<MessagesPage />} />
-				<Route path="/profile/:username" element={<ProfilesPage />} />
-			</Routes>
-		</div>
+			<div className="pt-20 w-full h-screen">
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/login" element={<Login />} />;
+					<Route path="/signup" element={<SignUpView />} />
+					<Route path="/jobs" element={<JobsPage />} />
+					<Route path="/campanies" element={<Campanies />} />
+					<Route path="/notifications" element={<NotificationsPage />} />
+					<Route path="/projects" element={<Projects />} />
+					<Route path="/messages" element={<MessagesPage />} />
+					<Route path="/profile/:username" element={<ProfilesPage />} />
+				</Routes>
+			</div>
+		</>
 	);
 }
 
