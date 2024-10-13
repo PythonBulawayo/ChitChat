@@ -1,0 +1,26 @@
+# Image of workspace. Learn more: https://www.gitpod.io/docs/configure/workspaces/workspace-image
+image: gitpod/workspace-full:latest
+
+# List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
+tasks:
+  - name: Setup Backend
+    before: cd backend
+    command: python -m venv venv && source venv/bin/activate && pip install -r requirements.txt && python manage.py makemigrations && python manage.py migrate && python manage.py runserver
+  - name: Create Superuser Account
+    before: cd backend
+    command: python manage.py createsuperuser
+  - name: Setup Frontend
+    before: cd frontend
+    command: npm install && npm run dev
+
+# List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/ports
+ports:
+  - name: Frontend
+    description: Port 5173 for the frontend
+    port: 5173
+    onOpen: open-browser
+  - name: Open Backend
+    description: Port 8000 for the frontend
+    port: 8000
+    onOpen: open-preview
+# Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
