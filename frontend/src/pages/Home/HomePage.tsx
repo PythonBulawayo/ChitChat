@@ -7,16 +7,18 @@ import TrendingTopic from "../../components/Home/TrendingTopics";
 export const Home = () => {
 	return (
 		<main className="w-full h-full bg-white">
-			<div className="flex gap-10 mx-auto w-3/4 h-full my-10">
-				<div className="w-1/3 flex flex-col space-y-5">
+			<div className="flex gap-5 lg:gap-10 mx-auto lg:w-3/4 w-full p-4 h-full my-10">
+				<div className="w-1/3 lg:flex flex-col space-y-5 hidden">
 					<SideBar />
 				</div>
-				<div className="w-2/3 flex flex-col space-y-4">
+				<div className="md:w-2/3 w-full flex flex-col space-y-4">
 					<MainCanvas />
 				</div>
-				<div className="flex w-1/3 flex-col space-y-5">
-					<Suggested />
-					<TrendingTopic />
+				<div className="md:w-1/3 w-full hidden md:block">
+					<div className="fixed flex flex-col space-y-5 lg:w-[19rem] w-[14rem]">
+						<Suggested />
+						<TrendingTopic />
+					</div>
 				</div>
 			</div>
 		</main>

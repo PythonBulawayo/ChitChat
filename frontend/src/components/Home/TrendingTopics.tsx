@@ -4,7 +4,7 @@ import Trending from "../common/Trending";
 
 const TrendingTopic = () => {
 	return (
-		<div className="border-2 border-gray-100 bg-white">
+		<div className="border-2 border-gray-100 bg-white w-full">
 			<div className="flex justify-between items-center border-b-2 border-gray-100 p-4">
 				<h2>Trending topics</h2>
 				<button

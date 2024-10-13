@@ -17,7 +17,7 @@ export const NavBar = () => {
 					</span>
 				</a>
 				<div className="flex items-center justify-center space-x-2">
-					<form className="relative hidden lg:block">
+					<form className="relative hidden md:block">
 						<div className="relative">
 							<div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
 								<svg

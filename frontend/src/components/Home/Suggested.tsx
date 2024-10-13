@@ -5,7 +5,7 @@ import UserFollow from "../common/UserFollow";
 
 const Suggested = () => {
 	return (
-		<div className="w-full border-2 border-gray-100">
+		<div className="border-2 border-gray-100 w-full">
 			<div className="flex justify-between items-center p-4">
 				<h2>Suggested</h2>
 				<button

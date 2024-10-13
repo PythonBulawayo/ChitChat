@@ -12,7 +12,7 @@ function App() {
 	return (
 		<>
 			<NavBar />
-			<div className="pt-20 w-full h-screen">
+			<div className="lg:pt-20 pt-10 w-full h-screen">
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/login" element={<Login />} />;

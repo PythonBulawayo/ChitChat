@@ -3,24 +3,7 @@ import { Link } from "react-router-dom";
 
 const NavButtons = () => {
 	return (
-		<ul className="flex items-center p-4 md:p-0 mt-4 font-medium rounded-lg md:space-x-2 lg:space-x-4 md:flex-row md:mt-0 border-2 md:border-0 border-primary-100 bg-primary-300 md:bg-primary-500">
-			<button className="hidden md:block lg:hidden">
-				<svg
-					className="w-6 h-6 text-white"
-					aria-hidden="true"
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 20 20"
-				>
-					<path
-						stroke="currentColor"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						strokeWidth="2"
-						d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-					/>
-				</svg>
-			</button>
+		<ul className="flex flex-col p-4 md:p-0 mt-4 font-medium rounded-lg md:space-x-2 lg:space-x-4 md:flex-row md:mt-0 border-2 md:border-0 border-primary-100 bg-primary-300 md:bg-primary-500">
 			<li className="flex md:flex-col flex-row justify-start md:justify-center items-center cursor-pointer group hover:text-primary-100">
 				<Link
 					to="/"
@@ -45,7 +28,7 @@ const NavButtons = () => {
 					<span className="block md:hidden lg:block">Home</span>
 				</Link>
 			</li>
-				<li className="flex md:flex-col flex-row justify-start md:justify-center items-center cursor-pointer group hover:text-primary-100">
+			<li className="flex md:flex-col flex-row justify-start md:justify-center items-center cursor-pointer group hover:text-primary-100">
 				<Link
 					to="/messages"
 					className="py-1 px-3 text-white text-lg group-hover:text-primary-100 flex lg:flex-col lg:gap-0 gap-4 items-center"
