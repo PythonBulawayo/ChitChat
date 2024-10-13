@@ -7,7 +7,11 @@ const MainCanvas = () => {
 		<div className="w-full flex flex-col space-y-5">
 			<CreatePost />
 			<Post />
-	
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
 		</div>
 	);
 };

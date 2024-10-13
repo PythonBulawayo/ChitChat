@@ -1,12 +1,12 @@
 import React from "react";
 import { SlOptionsVertical } from "react-icons/sl";
-import TobJobCard from "../common/TobJobCard";
+import Trending from "../common/Trending";
 
-const TopJobs = () => {
+const TrendingTopic = () => {
 	return (
 		<div className="border-2 border-gray-100 bg-white">
 			<div className="flex justify-between items-center border-b-2 border-gray-100 p-4">
-				<h2>Suggested</h2>
+				<h2>Trending topics</h2>
 				<button
 					onClick={() => {
 						//!TODO implement a dropdown
@@ -15,9 +15,9 @@ const TopJobs = () => {
 					<SlOptionsVertical />
 				</button>
 			</div>
-            <TobJobCard/>
+			<Trending />
 		</div>
 	);
 };
 
-export default TopJobs;
+export default TrendingTopic;
