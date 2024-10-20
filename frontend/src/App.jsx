@@ -19,7 +19,7 @@ function App() {
 					<Route path="/signup" element={<SignUpView />} />
 					<Route path="/notifications" element={<NotificationsPage />} />
 					<Route path="/messages" element={<MessagesPage />} />
-					<Route path="/profile/:username" element={<ProfilesPage />} />
+					<Route path="/profile/:id" element={<ProfilesPage />} />
 				</Routes>
 			</div>
 		</>
