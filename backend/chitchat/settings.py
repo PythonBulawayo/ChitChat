@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-jtz*%h2*r7@bk0z^3^bnyr*5z71s-d5abtq5+%=iwf4rzx#bih
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 
@@ -43,11 +43,14 @@ INSTALLED_APPS = [
     # Third Party apps
     "rest_framework",
     "corsheaders",
+    "django_filters",
     # Local apps
     "api",
     "accounts",
+    "core",
     # Dev tools
     "django_extensions",
+    "drf_yasg",
 ]
 
 MIDDLEWARE = [
@@ -142,7 +145,8 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     "DEFAULT_PERMISSION_CLASSES": [
         # "rest_framework.permissions.IsAuthenticated",
-    ]
+    ],
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
 
 

@@ -29,7 +29,7 @@
 
 - name: Create regular user with sudo priviledges
   user:
-    name: "{{create_user}}"
+    name: "{{ansible_user}}"
     state: present
     groups: prime
     append: true
@@ -38,7 +38,7 @@
 
 - name: Set authorised key for remote user
   authorized_key:
-    user: "{{ create_user}}"
+    user: "{{ ansible_user}}"
     state: present
     key: "{{copy_local_ssh_key}}"
 
@@ -76,7 +76,6 @@
     rule: allow
     port: "{{ssh_port}}"
     proto: tcp
-
 
 - name: UFW - Deny all other incoming traffic by default
   ufw:
