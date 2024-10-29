@@ -2,7 +2,7 @@ FROM python:3.10-slim
 
 WORKDIR /app
 COPY requirements.txt /app
-# Installing gcc and libc6-dev beacuse docker removes them after building Python,
+# Installing gcc and libc6-dev because docker removes them after building Python,
 # so it's impossible to build C extensions afterwards, wcwidth==0.2.6 and cwcwidth==0.1.8 in this case
 RUN apt-get update && apt-get install -y \
     gcc \
