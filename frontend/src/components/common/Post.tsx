@@ -5,6 +5,7 @@ import TechSTack from "./TechSTack";
 import { AiOutlineLike } from "react-icons/ai";
 import { GrView } from "react-icons/gr";
 import { FaRegCommentAlt } from "react-icons/fa";
+import { SlOptionsVertical } from "react-icons/sl";
 
 const techSTack = ["HTML", "React", "PHP", "Laravel"];
 
@@ -20,9 +21,20 @@ const Post = () => {
 					className="object-fill h-8"
 				/>
 				<div className="flex flex-col">
-					<p className="text-sm font-bold">Jessica William</p>
+					<div className="flex flex-row items-center justify-between">
+						<span className="text-sm font-bold">Jessica William</span>
+						<button
+							onClick={() => {
+								//!TODO implement a dropdown for edit, delete and share options
+							}}
+							className="ml-auto"
+						>
+							<SlOptionsVertical />
+						</button>
+					</div>
 					<p className="text-xs">{formatPostDate(createdAt)}</p>
 				</div>
+
 			</div>
 			<div className="my-2">
 				<p className="text-subheading-100 text-sm">
