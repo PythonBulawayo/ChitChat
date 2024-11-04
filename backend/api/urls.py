@@ -24,5 +24,6 @@ urlpatterns = [
     path("api/posts/new/", views.PostCreate.as_view(), name="post-create"),
     path("api/posts/<int:pk>/", views.PostDetail.as_view(), name="post-detail"),
     path("api/posts/delete/<int:pk>/", views.PostDelete.as_view(), name="post-delete"),
+    path("api/posts/<int:pk>/edit/", views.PostUpdate.as_view(), name='post-update'),
     path("api/signup", views.SignUpView.as_view(), name="signup-view"),
 ]
