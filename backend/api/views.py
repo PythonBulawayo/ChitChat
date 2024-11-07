@@ -2,7 +2,8 @@ import django_filters.rest_framework
 from rest_framework import filters, generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.permissions import AllowAny
 from accounts.models import CustomUser, Profile
 from core.models import Post
 
@@ -194,3 +195,4 @@ class PostDelete(generics.DestroyAPIView):
             return self.destroy(request, *args, **kwargs)
         else:
             return Response(status=status.HTTP_403_FORBIDDEN)
+
