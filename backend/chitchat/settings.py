@@ -166,5 +166,6 @@ SIMPLE_JWT = {
     "AUTH_COOKIE_HTTP_ONLY": True,  # Http only cookie flag.It's not fetch by javascript.
     "AUTH_COOKIE_PATH": "/",  # The path of the auth cookie.
     "AUTH_COOKIE_SAMESITE": 'None',  # Whether to set the flag restricting cookie leaks on cross-site requests.
-    "ACCESS_TOKEN_LIFETIME": timedelta(days=1)
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=1), # changed access token lifetime to 1 hour
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),  # Long expiration for refresh tokens
 }

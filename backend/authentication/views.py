@@ -3,8 +3,9 @@ from rest_framework.response import Response
 from django.contrib.auth import authenticate
 from rest_framework import status, generics
 from django.conf import settings
-
+from rest_framework.permissions import AllowAny
 from authentication.serializers import AuthUserSerializer
+from authentication.serializers import RefreshTokenSerializer
 
 
 def get_tokens_for_user(user):
@@ -61,8 +62,39 @@ class LogoutView(generics.GenericAPIView):
             max_age=0,
             # domain='example.com',
             secure=settings.SIMPLE_JWT["AUTH_COOKIE_SECURE"],
-            expires="Thu, 01 Jan 1970 00:00:00 GMT",
+            #expires="Thu, 01 Jan 1970 00:00:00 GMT", Setting max_age=0 is good enough 
             samesite=settings.SIMPLE_JWT["AUTH_COOKIE_SAMESITE"]
         )
         response.data = {"detail": "Logout successful."}
         return response
+    
+
+
+
+class RefreshTokenView(generics.GenericAPIView):
+    permission_classes = [AllowAny]  # Public access for this endpoint
+    authentication_classes = []
+    serializer_class = RefreshTokenSerializer  # Assign the serializer to the view
+
+
+    
+    def post(self, request, *args, **kwargs):
+        # Extract the refresh token from the request
+        refresh_token = request.data.get("refresh", None)
+
+        if not refresh_token:
+            return Response({"detail": "Refresh token is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            # Create a RefreshToken instance from the provided refresh token
+            token = RefreshToken(refresh_token)
+            # Generate a new access token using the refresh token
+            new_access_token = str(token.access_token)
+
+            # Respond with the new tokens
+            return Response({
+                "access": new_access_token,
+            }, status=status.HTTP_200_OK)
+        
+        except Exception as e:
+            return Response({"detail": "Invalid refresh token."}, status=status.HTTP_400_BAD_REQUEST)

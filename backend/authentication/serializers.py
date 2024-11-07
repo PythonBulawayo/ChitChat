@@ -7,3 +7,6 @@ class AuthUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ["username", "password"]
+
+class RefreshTokenSerializer(serializers.Serializer):
+    refresh = serializers.CharField(required=True)
