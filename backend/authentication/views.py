@@ -38,15 +38,20 @@ class LoginView(generics.GenericAPIView):
                     httponly=settings.SIMPLE_JWT["AUTH_COOKIE_HTTP_ONLY"],
                     samesite=settings.SIMPLE_JWT["AUTH_COOKIE_SAMESITE"],
                     max_age=823396,
-                    # domain='example.com'
                 )
                 response.data = data
                 response.status_code = status.HTTP_200_OK
                 return response
             else:
-                return Response({"details": "This account is not active."}, status=status.HTTP_400_BAD_REQUEST)
+                return Response(
+                    {"details": "This account is not active."},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
         else:
-            return Response({"details": "Account with given credentials not found."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {"details": "Account with given credentials not found."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
 
 class LogoutView(generics.GenericAPIView):
@@ -59,10 +64,9 @@ class LogoutView(generics.GenericAPIView):
         response.set_cookie(
             key=settings.SIMPLE_JWT["AUTH_COOKIE"],
             max_age=0,
-            # domain='example.com',
             secure=settings.SIMPLE_JWT["AUTH_COOKIE_SECURE"],
             expires="Thu, 01 Jan 1970 00:00:00 GMT",
-            samesite=settings.SIMPLE_JWT["AUTH_COOKIE_SAMESITE"]
+            samesite=settings.SIMPLE_JWT["AUTH_COOKIE_SAMESITE"],
         )
         response.data = {"detail": "Logout successful."}
         return response

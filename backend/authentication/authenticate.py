@@ -10,16 +10,14 @@ def enforce_csrf(request):
     Enforce CSRF validation.
     """
 
-    def dummy_get_response(request):  # pragma: no cover
+    def dummy_get_response(request):
         return None
 
     check = CSRFCheck(dummy_get_response)
-    # populates request.META['CSRF_COOKIE'], which is used in process_view()
     check.process_request(request)
     reason = check.process_view(request, None, (), {})
     if reason:
-        # CSRF failed, bail with explicit error message
-        raise exceptions.PermissionDenied('CSRF Failed: %s' % reason)
+        raise exceptions.PermissionDenied("CSRF Failed: %s" % reason)
 
 
 class CustomAuthentication(JWTAuthentication):
@@ -28,12 +26,11 @@ class CustomAuthentication(JWTAuthentication):
         header = self.get_header(request)
 
         if header is None:
-            raw_token = request.COOKIES.get(settings.SIMPLE_JWT['AUTH_COOKIE']) or None
+            raw_token = request.COOKIES.get(settings.SIMPLE_JWT["AUTH_COOKIE"]) or None
         else:
             raw_token = self.get_raw_token(header)
         if raw_token is None:
             return None
 
         validated_token = self.get_validated_token(raw_token)
-        # enforce_csrf(request)
         return self.get_user(validated_token), validated_token
